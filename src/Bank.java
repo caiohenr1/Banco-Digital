@@ -5,8 +5,19 @@ public class Bank {
 //      dados cliente:
 
         double saldoAtual = 200.00;
+        int operacao = 0;
         String cliente = "Caio Henrique Antonio";
         String conta = "Corrente";
+        String bankMenu = """
+                Operações
+                                      
+                    1- Consultar saldos
+                    2- Receber valor
+                    3- Transferir valor
+                    4- Sair
+                                      
+                    Digite a opção desejada: 
+                """;
 
         System.out.println(String.format("""
                 ***********************
@@ -19,28 +30,21 @@ public class Bank {
                 """, cliente, conta, saldoAtual));
 
 
-        int operacao = 0;
+
+
         Scanner operacaoSelecionada = new Scanner(System.in);
         Scanner depositoValor = new Scanner(System.in);
         Scanner transferirValor = new Scanner(System.in);
 
+
         while (operacao != 4) {
-            System.out.println(String.format("""
-                    Operações
-                                      
-                    1- Consultar saldos
-                    2- Receber valor
-                    3- Transferir valor
-                    4- Sair
-                                      
-                    Digite a opção desejada: 
-                    """));
+            System.out.println(bankMenu);
             operacao = operacaoSelecionada.nextInt();
 
             switch (operacao) {
                 case 1:
                     System.out.println(String.format("""
-                          2***********************
+                          ***********************
                           Seu saldo atual é: R$ %.2f
                           ***********************
                           """, saldoAtual));
@@ -91,7 +95,8 @@ public class Bank {
                 default:
                     System.out.println("""
                           ***********************
-                          OPÇÃO INVÁLIDA - SELECIONE ENTRE 1  & 4 
+                          OPÇÃO INVÁLIDA - SELECIONE ENTRE 1  & 4
+                          ***********************
                           """);
             }
         }
